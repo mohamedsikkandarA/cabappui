@@ -5,14 +5,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
-<h1>LOGIN PAGE</h1>
-<br/>
-<label for= "MOBILE NO">ENTER THE MOBILE NO</label>
-<input type ="text" mobile no ="mobile no" id="mobile no"  placeholder="mobile no" required><br/>
-<label for= "PASSWORD">ENTER THE PASSWORD</label>
-<input type ="text" password="password" id="password" placeholder="password"required><br/>
-<button>SUBMIT</button>
+<form onsubmit="login()">
+    
+  <h1>LOGIN PAGE</h1>
+  <br/>
+    <label for= "mobile no">ENTER THE MOBILE NO</label>
+    <input type ="number" id="mobileno"  placeholder="mobile no" required><br/>
+    <label for= "password">ENTER THE PASSWORD</label>
+    <input type ="password" password="password" id="password" placeholder="password" required><br/>
+    <button>SUBMIT</button>
 </form>
+<script>
+  function login(){
+    event.preventDefault();
+    alert("login btn clicked");
+    let mobileno =document.querySelector("#mobileno").value;
+    alert("mobileno:"+ mobileno );
+    if(mobileno=="9698612143"){
+      alert("login success");
+      window.location.href="cabtypes.html";
+    }
+    else{
+      alert("login failed");
+    }
+  }
+
+</script>
+
 </body>
 </html>
