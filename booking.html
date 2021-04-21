@@ -2,44 +2,68 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Cab App - Bill Estimator</title>
+<style>
+		form{
+		  border: 5px solid #F5EEF8;
+		  padding: 10px;
+		  margin: auto;
+		  margin-top: 15%;
+		  width: 350px;
+		  background-color: #E8DAEF ;
+	  
+		}
+	  </style>
 </head>
-<body>
-<center>
-<h3>BOOKING</h3>
-<form action="peakhour.html" >
-<input type="hidden" name="ip" value="1.1.1.1">
-<label>JOURNEY DATE</label><br/>
-<input type="date" name="journeydate" min="2021-04-19" max="2021-04-26"/>
-<br/>
-<br/>
-<label>TIMING</label>
-<br/>
-<input type="time" name="pickuptime"/>
-<br/>
-<br/>
-<input type ="radio" name="senior citizen" value="Y">SENIOR CITIZEN
-<br/>
-<br/>
-<input type ="radio" name="senior citizen" value="n">SENIOR CITIZEN OR NOT
-<br/>
-<br/>
-<label> GENDER</label>
-<br/>
-<br/>
-<input type="radio" name="gender" value="m">MALE
-<br/>
-<br/>
-<input type="radio" name="gender" value="f">FEMALE
-<br/>
-<br/>
-<h4>INSTRUCTION</h4>
-<li>Must wear the mask</li>
-<br/>
-<li>Should not eat in the cab</li>
-<br/>
-<button>NEXT PAGE</button>
-</center>
+<body bgcolor="#D1FF33">
+	<center>
+		<h1>BILL AND GST</h1>
+		<br>
+<form onsubmit="gst()">
+<label>Select Cab Type :</label><br><br>
+		<select name="cabtype" id="cabType" required>
+			<option disabled>--Select Cab Type--</option>
+			<option value="micro" >MICRO</option>
+			<option value="mini" >MINI</option>
+			<option value="prime">PRIME</option>
+		</select>
+		<br><br>
+		<input type="number" name="kms" id="kms" placeholder="Enter No.Of Kilometer" required>
+		<br><br>
+		<button>Submit</button>
+		<br/>
 </form>
+
+		<button onclick="next()">Next</button>
+<script>
+function gst()
+{
+	event.preventDefault();
+
+    let cabType=document.querySelector("#cabType").value;
+    let km=document.querySelector("#kms").value;
+    let price =0;
+    switch(cabType)
+    {
+    case"micro":
+    	 price=km*10;
+    	break;
+    case"mini":
+    	 price=km*15;
+    	break;
+    case"prime":
+    	 price=km*20;
+    	break;
+    }
+    let amount=price+(price*0.10);
+    alert("TOTAL AMOUT IS "+amount+".Rs");
+    alert("THANK A TON FOR YOUR BOOKING");
+}
+function next()
+{
+	window.location.href="senior.html";
+}
+</script>
+</center>
 </body>
 </html>
